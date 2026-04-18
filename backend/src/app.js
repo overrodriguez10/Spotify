@@ -12,6 +12,12 @@ app.get('/', (req, res) => {
   res.send('El backend del Spotify Clone está funcionando correctamente 🚀');
 });
 
+app.get('/setup-admin', async (req, res) => {
+  const syncDb = require('./src/sync');
+  await syncDb();
+  res.send('Admin sincronizado correctamente ✅');
+});
+
 app.use(cors({
   origin: '*' 
 }));
