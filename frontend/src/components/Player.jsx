@@ -36,11 +36,13 @@ export default function Player() {
 
   if (!currentSong) return null;
 
+  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+
   return (
     <div className="player">
       <div className="player-info">
         {currentSong.image_path && (
-          <img src={`http://localhost:5000${currentSong.image_path}`} alt="cover" className="player-img" />
+          <img src={`${apiUrl}${currentSong.image_path}`} alt="cover" className="player-img" />
         )}
         <div>
           <div className="player-title">{currentSong.title}</div>
@@ -71,7 +73,7 @@ export default function Player() {
 
       <audio 
         ref={audioRef} 
-        src={`http://localhost:5000${currentSong.file_path}`} 
+        src={`${apiUrl}${currentSong.file_path}`} 
         onTimeUpdate={handleTimeUpdate}
         onEnded={() => setIsPlaying(false)}
       />

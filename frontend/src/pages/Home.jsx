@@ -7,7 +7,8 @@ export default function Home() {
   const { user } = useAuth();
 
   useEffect(() => {
-    fetch('http://localhost:5000/api/songs')
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    fetch(`${apiUrl}/api/songs`)
       .then(res => res.json())
       .then(data => setSongs(data))
       .catch(err => console.error(err));

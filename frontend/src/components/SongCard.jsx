@@ -11,8 +11,9 @@ export default function SongCard({ song }) {
 
   const handleAddClick = async (e) => {
     e.stopPropagation();
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
     try {
-      const res = await fetch('http://localhost:5000/api/playlists', {
+      const res = await fetch(`${apiUrl}/api/playlists`, {
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`
         }
@@ -26,8 +27,9 @@ export default function SongCard({ song }) {
   };
 
   const addSongToPlaylist = async (playlistId) => {
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
     try {
-      const res = await fetch('http://localhost:5000/api/playlists/add-song', {
+      const res = await fetch(`${apiUrl}/api/playlists/add-song`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
@@ -44,10 +46,11 @@ export default function SongCard({ song }) {
     }
   };
 
+  const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
   return (
     <div className="song-card" style={{ position: 'relative' }}>
       <img 
-        src={song.image_path ? `http://localhost:5000${song.image_path}` : 'https://via.placeholder.com/150'} 
+        src={song.image_path ? `${apiUrl}${song.image_path}` : 'https://via.placeholder.com/150'} 
         alt={song.title} 
         className="song-image" 
       />

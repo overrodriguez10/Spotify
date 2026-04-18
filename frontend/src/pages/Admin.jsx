@@ -19,8 +19,9 @@ export default function Admin() {
     formData.append('song', songFile);
     if (imageFile) formData.append('image', imageFile);
 
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
     try {
-      const res = await fetch('http://localhost:5000/api/songs', {
+      const res = await fetch(`${apiUrl}/api/songs`, {
         method: 'POST',
         headers: {
           'Authorization': `Bearer ${localStorage.getItem('token')}`

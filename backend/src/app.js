@@ -8,7 +8,13 @@ const playlistsRoutes = require('./routes/playlists');
 
 const app = express();
 
-app.use(cors());
+app.get('/', (req, res) => {
+  res.send('El backend del Spotify Clone está funcionando correctamente 🚀');
+});
+
+app.use(cors({
+  origin: '*' 
+}));
 app.use(express.json());
 
 // Serve static files (uploads)

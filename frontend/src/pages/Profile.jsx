@@ -11,8 +11,9 @@ export default function Profile() {
     const hue = Math.floor(Math.random() * 360);
     setGradientColor(`hsl(${hue}, 40%, 40%)`);
 
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
     // Fetch user playlists
-    fetch('http://localhost:5000/api/playlists', {
+    fetch(`${apiUrl}/api/playlists`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }

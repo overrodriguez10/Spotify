@@ -9,7 +9,8 @@ export default function Playlists() {
   const [isCreating, setIsCreating] = useState(false);
 
   const fetchPlaylists = () => {
-    fetch('http://localhost:5000/api/playlists', {
+    const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+    fetch(`${apiUrl}/api/playlists`, {
       headers: {
         'Authorization': `Bearer ${localStorage.getItem('token')}`
       }
@@ -28,7 +29,8 @@ export default function Playlists() {
     if (!newPlaylistName.trim()) return;
 
     try {
-      const res = await fetch('http://localhost:5000/api/playlists', {
+      const apiUrl = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      const res = await fetch(`${apiUrl}/api/playlists`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
