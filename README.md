@@ -1,4 +1,4 @@
-# Spotify Clone (Full-Stack Web App)
+# Spoty Music (Full-Stack Web App)
 
 Este es un clon simplificado de Spotify, diseñado para ser ejecutado fácilmente en cualquier entorno local con configuraciones mínimas. Está dividido en un backend con Node.js/Express y un frontend con React/Vite.
 
